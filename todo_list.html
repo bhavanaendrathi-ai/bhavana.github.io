@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html{
+            background-color: bisque;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 30px;
+            text-align: center;
+        }
+        
+        .todolist{
+            margin: 50px auto;
+        }
+
+        #todos {
+            width: fit-content;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        ol {
+            width: fit-content;
+            margin: auto;
+            padding-left: 50px;
+            list-style-type: number;
+        }
+
+
+        input{
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        button{
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 8px;
+            margin: 10px;
+            cursor: pointer;
+            background: #df8484;
+            color: white;
+            font-weight: 700;
+            border: none;
+        }
+
+        button:hover{
+            background: #df8484c7;
+            transform: scale(1.05);
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="todolist">
+        <h3> To-Do List </h3>
+        <input type="text" placeholder="enter your task" id="taskInput">
+
+        <button onclick="addTask()">Add Task</button>
+        <button onclick="delTask()">Delete Task</button>
+        <ol id="todos"></ol>
+    </div>  
+    <script>
+        function addTask() {
+            if(taskInput.value === '') {
+                alert('Please enter a task');
+                return;
+            }
+            const input = document.getElementById('taskInput');
+            const nli = document.createElement('li');
+            nli.innerText = input.value;
+            document.getElementById('todos').appendChild(nli);
+            genlist();
+            input.value = '';
+        }
+        function delTask() {
+            const list = document.getElementById('todos');
+            if(list.children.length === 0) {
+                alert('No tasks to delete');
+                return;
+            }
+            list.removeChild(list.firstElementChild);
+            genlist();
+        }
+
+        function genlist() {
+            const list1 = document.getElementById('todos');
+            window.localStorage.setItem('taskInput', list1.innerHTML);
+        }
+
+        function showTasks(){
+            const saved = window.localStorage.getItem('taskInput');
+
+            if(saved){
+                document.getElementById('todos').innerHTML = saved;
+            }
+        }
+
+        showTasks();
+
+
+
+    </script>
+</body>
+</html>

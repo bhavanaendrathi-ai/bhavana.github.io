@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #fff8ef;
+    color: #222;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+  }
+
+  /* LEFT */
+  .photo {
+  width: 210px;
+  height: 260px;
+  margin: auto;
+  border-radius: 22px;
+  padding: 8px;
+  background: lightpink
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #fff;
+}
+
+
+
+  .hi {
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .bio {
+    margin: 15px 0;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .contact p {
+    margin: 6px 0;
+    font-size: 14px;
+  }
+
+  /* TAG HEADERS */
+  .tag {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin: 25px 0 10px;
+  }
+
+  .purple { background: #c9b8ff; }
+  .yellow { background: #e6ff9f; }
+  .pink { background: #ffb7cc; }
+  .green { background: #9dffb0; }
+
+  /* SKILLS */
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill {
+    border: 1.5px solid #222;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  /* SOFTWARE */
+  .software {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .tool {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  /* EXPERIENCE */
+  .exp {
+    margin-bottom: 15px;
+  }
+
+  .year {
+    color: #ff6f61;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .title {
+    font-weight: 600;
+  }
+
+  .place {
+    font-size: 13px;
+    color: #555;
+  }
+
+  div a{
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LEFT SIDE -->
+  <div>
+  
+    <img src="bhavana.jpg" alt="Bhavana" class="photo">
+
+
+    <div class="hi">Bhavana Endrathi</div>
+    <p class="bio">
+      I am E. Bhavana, a Diploma student in Computer Engineering based in Tirupati. I am a quick learner with a positive attitude, strong teamwork skills, and a passion for learning new technologies. 
+    </p>
+
+    <div class="contact">
+          <p>mail: bhavanaendrathi@gmail.com</p>
+          <p>linkedin: https://www.linkedin.com/in/bhavana-endrathi-13b903385</p>
+    </div>
+
+    <div class="tag purple">EDUCATION</div>
+
+    <p class="year">2023 – 2026</p>
+    <p class="title">Diploma in Computer Engineering</p>
+    <p class="place">Sri Venkateshwara government polytechnic Tirupati</p>
+
+    <p class="year">2022 – 2023</p>
+    <p class="title">Secondary education</p>
+    <p class="place">Kendriya Vidyalaya - kadapa</p>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div>
+    <div class="tag yellow">SKILLS</div>
+    <div class="skills">
+      <div class="skill">C Programming</div>
+      <div class="skill">Android Progamming(basics)</div>
+      <div class="skill">Java (basics)</div>
+      <div class="skill">HTML</div>
+      <div class="skill">CSS(basics)</div>
+      <div class="skill">JavaScript(basics)</div>
+      <div class="skill">Basics of Web Development</div>
+    </div>
+
+    <div class="tag pink">SOFT SKILLS</div>
+    <div class="skills">
+      <div class="skill">Quick Learner</div>
+      <div class="skill">Team Player</div>
+      <div class="skill">Problem solving</div>
+      <div class="skill">Good Communication</div>
+      <div class="skill">Logical Thinking</div>
+    </div>
+
+
+    <div class="tag green">EXPERIENCE</div>
+
+    <div class="exp">
+      <p class="title">Thoughtworks </p>
+      <p class="place">gaining hands on experience in web Development and team work</p>
+    </div>
+
+
+    <div class="tag purple">DOMAIN INTEREST</div>
+    <div class="skills">
+      <div class="skill">Software Development</div>
+      <div class="skill">Programming</div>
+      <div class="skill">Web Development</div>
+    </div>
+
+  <div class="tag yellow">
+   <a href="projects.html">View Projects</a>
+  </div>
+</div>
+
+</body>
+</html>
