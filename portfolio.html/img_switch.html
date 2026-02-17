@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align:center;
+        }
+        button{
+            padding:10px 20px;
+            background-color:#333;
+            color:white;
+            border:none;
+            margin:10px;
+            border-radius: 4px;
+        }
+        
+        button:hover{
+            background-color:#555;
+        }
+    </style>
+</head>
+<body>
+    <img id="grp" width="800px"><br>
+
+    <button onclick="previous_image()">prev</button>
+    <button onclick="next_image()">next</button>
+    
+    <script>
+        let image = ["https://i.pinimg.com/736x/30/5c/c0/305cc0072249f80a6a9a4a79de30c851.jpg",
+        "https://i.pinimg.com/736x/3f/f9/b0/3ff9b013e56a26bc4ab160ad4467b990.jpg",
+        "https://i.pinimg.com/1200x/16/a6/88/16a68805ca790f6ecccb2cfe3741f732.jpg"]
+
+        let index = 0;
+        let img = document.getElementById("grp");
+        img.src = image[index];
+
+        function next_image(){
+            if(index < image.length-1){
+                index++;
+            }else{
+                index = 0;
+            }
+            img.src = image[index];
+        }
+
+
+
+        function previous_image(){
+            if(index > 0){
+                index--;
+            }else{
+                index = image.length-1;
+            }
+            img.src = image[index];
+        }
+
+    </script>
+</body>
+</html>

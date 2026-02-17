@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 80%;
+            margin: 40px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" id="table">
+        <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Technologies Used</th>
+            <th>live link</th>
+            <th>git</th>
+        </tr>
+
+        <tr>
+            <td>image switcher</td>
+            <td>A web application for switching between images.</td>
+            <td>HTML, CSS, JavaScript</td>
+            <td><a href="">Live Demo</a></td>
+            <td><a href="">GitHub Repo</a></td>
+        </tr>
+
+        <tr>
+            <td>lume</td>
+            <td>a web application for fan community.</td>
+            <td>HTML, CSS, JavaScript</td>
+            <td><a href="">Live Demo</a></td>
+            <td><a href="">GitHub Repo</a></td>
+        </tr>
+
+        <tr>
+            <td>HomeHarvest</td>
+            <td>a web application for buying and selling fresh produce.</td>
+            <td>HTML, CSS, JavaScript</td>
+            <td><a href="">Live Demo</a></td>
+            <td><a href="">GitHub Repo</a></td>
+        </tr>
+    </table>
+    <script>
+    // JavaScript to handle the "View Work" button click
+    function scrollToSection() {
+        const projectsSection = document.getElementById('projects');
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+
+    
+    </script>
+</body>
+</html>
