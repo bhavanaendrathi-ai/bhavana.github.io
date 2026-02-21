@@ -1,115 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo</title>
+
     <style>
+
         *{
-            margin: 0;
-            padding: 0;
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
         }
 
         body, html{
-            background-color: bisque;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: 30px;
-            text-align: center;
+        background-color: bisque;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+        font-size:30px;
+        text-align:center;
         }
-        
+
         .todolist{
-            margin: 50px auto;
+        margin:50px auto;
+        width:90%;
+        max-width:500px;
         }
 
-        #todos {
-            width: fit-content;
-            margin: 20px auto;
-            text-align: left;
+        #todos{
+        width:fit-content;
+        margin:20px auto;
+        text-align:left;
         }
 
-        ol {
-            width: fit-content;
-            margin: auto;
-            padding-left: 50px;
-            list-style-type: number;
+        ol{
+        width:100%;
+        margin:auto;
+        padding-left: 0px;
+        list-style-type:none;
         }
 
+        li{
+        font-size:20px;
+        margin:10px 0;
+        display:flex;           
+        align-items:center;      
+        gap:10px;
+        }
 
         input{
-            padding: 10px;
-            font-size: 15px;
-            border-radius: 8px;
-            margin: 10px;
+        padding:10px;
+        font-size:15px;
+        border-radius:8px;
+        margin:10px;
+        width:70%;
         }
+
         button{
-            padding: 10px;
-            font-size: 15px;
-            border-radius: 8px;
-            margin: 10px;
-            cursor: pointer;
-            background: #df8484;
-            color: white;
-            font-weight: 700;
-            border: none;
+        padding:10px;
+        font-size:15px;
+        border-radius:8px;
+        margin:5px;
+        cursor:pointer;
+        background:#df8484;
+        color:white;
+        font-weight:700;
+        border:none;
         }
 
         button:hover{
-            background: #df8484c7;
-            transform: scale(1.05);
+        background:#df8484c7;
+        transform:scale(1.05);
         }
 
-        
+        .done{
+        text-decoration:line-through;
+        opacity:0.6;
+        }
+
     </style>
+
 </head>
 <body>
     <div class="todolist">
         <h3> To-Do List </h3>
         <input type="text" placeholder="enter your task" id="taskInput">
-
         <button onclick="addTask()">Add Task</button>
-        <button onclick="delTask()">Delete Task</button>
         <ol id="todos"></ol>
-    </div>  
+    </div>
+
     <script>
-        function addTask() {
-            if(taskInput.value === '') {
-                alert('Please enter a task');
-                return;
+            let tasks = [];
+            function addTask(){
+            const input = document.getElementById("taskInput");
+
+            if(input.value===""){
+            alert("Enter task");
+            return;
             }
-            const input = document.getElementById('taskInput');
-            const nli = document.createElement('li');
-            nli.innerText = input.value;
-            document.getElementById('todos').appendChild(nli);
-            genlist();
-            input.value = '';
-        }
-        function delTask() {
-            const list = document.getElementById('todos');
-            if(list.children.length === 0) {
-                alert('No tasks to delete');
-                return;
+
+            tasks.push({text: input.value,done:false});
+            saveTasks();
+            renderTasks();
+            input.value="";
             }
-            list.removeChild(list.firstElementChild);
-            genlist();
+
+            function renderTasks(){
+            const list=document.getElementById("todos");
+            list.innerHTML="";
+
+            tasks.forEach(function(task,index){
+            const li=document.createElement("li");
+            const checkbox=document.createElement("input");
+            checkbox.type="checkbox";
+            checkbox.checked=task.done;
+            checkbox.onclick=function(){
+            tasks[index].done=checkbox.checked;
+            saveTasks();
+            renderTasks();
         }
-
-        function genlist() {
-            const list1 = document.getElementById('todos');
-            window.localStorage.setItem('taskInput', list1.innerHTML);
-        }
-
-        function showTasks(){
-            const saved = window.localStorage.getItem('taskInput');
-
-            if(saved){
-                document.getElementById('todos').innerHTML = saved;
+            const span=document.createElement("span");
+            span.innerText=task.text;
+            if(task.done){
+            span.classList.add("done");
             }
-        }
 
-        showTasks();
+            const edit=document.createElement("button");
+            edit.innerText="Edit";
+            edit.onclick=function(){
+            const newText=prompt("Edit task",task.text);
+                if(newText!==null){
+                tasks[index].text=newText;
+                saveTasks();
+                renderTasks();
+                }
+            }
+            const del=document.createElement("button");
+            del.innerText="Delete";
+            del.onclick=function(){
+            tasks.splice(index,1);
+            saveTasks();
+            renderTasks();
+            }
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(edit);
+                li.appendChild(del);
+                list.appendChild(li);
+                });
+            }
+            function saveTasks(){
+                localStorage.setItem("tasks",JSON.stringify(tasks));
+            }
+
+            function showTasks(){
+                const saved=localStorage.getItem("tasks");
+                if(saved){
+                    tasks=JSON.parse(saved);
+                    renderTasks();
+                }
+            }
+            showTasks();
+
+        </script>
 
 
-
-    </script>
 </body>
 </html>
